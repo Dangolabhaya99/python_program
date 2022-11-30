@@ -1,5 +1,4 @@
 import sys
-
 import mysql.connector
 
 def connect():
@@ -19,7 +18,7 @@ def connect():
 
 def insert(notebook):
     conn = None
-    sql = """INSERT INTO notebooks VALUES(%s, %s, %s)"""
+    sql = """INSERT INTO notebook VALUES(%s, %s, %s)"""
     values = (notebook.getNID(), notebook.getPages(), notebook.getPrice())
     result = False
     try:
@@ -41,8 +40,52 @@ def insert(notebook):
 def all():
     pass
 def search(nid):
-    pass
+    sql = """SELECT * FROM notebook WHERE nid=%s"""
+    values = (nid,)
+    record = None
+    try:
+        conn = connect()
+        cursor = conn.cursor()
+        cursor.execute(sql,values)
+        record = cursor.fetchone()
+        cursor.close()
+        conn.close()
+
+    except:
+        print("Error:",sys.exc_info())
+    finally:
+        del values
+        del conn
+        return record
+
 def edit(notebook):
-    pass
+    sql="""UPDATE notebook set pages=%s,price=%s WHERE nid=%s"""
+    values = (notebook.getPages(),notebook.getPrice(),notebook.getNID())
+    result=False
+    try:
+        conn = connect()
+        cursor = conn.cursor()
+        cursor.execute(sql, values)
+        conn.commit()
+        cursor.close()
+        conn.close()
+        result=True
+    except:
+        print("Error:",sys.exc_info())
+    finally:
+        del values,sql
+        return result
 def delete(nid):
-    pass
+    sql="""DELETE FROM notebook WHERE nid=%s"""
+    values = (nid,)
+    try:
+        conn = connect()
+        cursor = conn.cursor()
+        cursor.execute(sql, values)
+        conn.commit()
+        conn.close()
+        cursor.close()
+    except:
+        print("Error:",sys.exc_info())
+    finally:
+        del values,sql

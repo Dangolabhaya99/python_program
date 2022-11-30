@@ -1,37 +1,55 @@
 # pip install tk
 from tkinter import Tk # Window
-from tkinter import Label # Label
+from tkinter import Label# Label
+from tkinter import Text
+from tkinter import Checkbutton
+from tkinter import Radiobutton
+from tkinter import Listbox
+from tkinter import Scrollbar
 from tkinter import Entry # Entry
 from tkinter import Button # Button
 
 # Declare and initialize
 window = Tk()#declare and initialize
-window.geometry("250x350")# Resize
+window.geometry("1360x768")# Resize
 window.resizable(False,False)# resizable-> False
 window.title("Main Door")
 
-lblNID = Label(window, text="NID:")
-lblPages = Label(window, text="PAGE:")
-lblPrice = Label(window, text="PRICE:")
+lblFID = Label(window, text="Welcome To")
+lblSID = Label(window, text="Hamro Taxi Booking System")
+lblTID = Label(window, text="CUSTOMER:")
+lblFoID = Label(window, text="DRIVER:")
+lblFiID = Label(window, text="User:")
+lblSiID = Label(window, text="Password:")
+lblSeID = Label(window, text="For Registration")
+lblEID = Label(window, text="Click Here in ")
 
-txtNID = Entry(window,width=20)
+txtTID = Checkbutton(window,width=2)
+txtFoID = Checkbutton(window,width=2)
+txtFiID = Entry(window,width=20)
+txtSiID = Entry(window,width=20)
 txtPages = Entry(window,width=20)
 txtPrice = Entry(window,width=20)
 
-btnSave = Button(window,text="SAVE")
-btnClose = Button(window,text="CLOSE")
+btnLogin = Button(window,text="LOGIN")
+btnSignin = Button(window,text="SIGN UP")
 
-lblNID.place(x=20, y=10)
-txtNID.place(x=100, y=10)
+lblFID.place(x=535, y=125)
+lblSID.place(x=505, y=145)
+lblTID.place(x=525, y=180)
+lblFoID.place(x=525, y=195)
+lblFiID.place(x=505, y=225)
+lblSiID.place(x=505, y=245)
+lblSeID.place(x=535, y=305)
+lblEID.place(x=535, y=330)
 
-lblPages.place(x=20, y=40)
-txtPages.place(x=100, y=40)
+txtTID.place(x=590, y=180)
+txtFoID.place(x=590, y=195)
+txtFiID.place(x=560, y=225)
+txtSiID.place(x=560, y=245)
 
-lblPrice.place(x=20, y=70)
-txtPrice.place(x=100, y=70)
-
-btnSave.place(x=100, y=100)
-btnClose.place(x=150, y=100)
+btnLogin.place(x=638, y=270)
+btnSignin.place(x=634, y=320)
 
 window.mainloop()# display
 
